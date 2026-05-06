@@ -14,7 +14,7 @@ export function Hero() {
             Plataforma N°1 de força de vendas para distribuidoras
           </div>
 
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] text-ink mb-6">
+          <h1 className="font-display font-bold leading-[1.02] text-ink mb-6" style={{ fontSize: "58px" }}>
             Tire pedidos em <span className="gradient-text italic">segundos</span>.
             <br />
             Não em horas.
@@ -33,29 +33,6 @@ export function Hero() {
             >
               Agendar demonstração gratuita <ArrowRight className="w-5 h-5" />
             </a>
-            <a
-              href="#solucao"
-              className="inline-flex items-center gap-2 text-ink font-semibold hover:text-primary transition"
-            >
-              <PlayCircle className="w-5 h-5" />
-              Ver como funciona em 90 segundos
-            </a>
-          </div>
-
-          <div className="pt-8 border-t border-border">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium mb-4">
-              Mais de 500 distribuidoras confiam na Clic
-            </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 opacity-70">
-              {["Criativa", "D'Itália", "Nuty", "Coréia", "Sankhya", "TOTVS"].map((b) => (
-                <span
-                  key={b}
-                  className="font-display text-lg font-bold text-ink/60"
-                >
-                  {b}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
 
