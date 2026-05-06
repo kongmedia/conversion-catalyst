@@ -11,6 +11,7 @@ import { Plans } from "@/components/site/Plans";
 import { Faq } from "@/components/site/Faq";
 import { Cta } from "@/components/site/Cta";
 import { Footer } from "@/components/site/Footer";
+import { LeadModal } from "@/components/site/LeadModal";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -46,6 +47,7 @@ function Index() {
         <Cta />
       </main>
       <Footer />
+      <LeadModal />
     </div>
   );
 }
