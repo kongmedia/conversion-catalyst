@@ -450,7 +450,7 @@ function PilarCard({
               return (
                 <div key={item.n} className="bg-card rounded-xl p-4 border border-transparent hover:border-border transition">
                   <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 border border-border flex items-center justify-center flex-shrink-0 rounded-lg bg-card">
+                    <div className="w-9 h-9 border border-border flex items-center justify-center flex-shrink-0 bg-card" style={{ borderRadius: "5px" }}>
                       <Icon className="w-4 h-4" style={{ color: pilar.color }} />
                     </div>
                     <div className="flex-1 min-w-0">
