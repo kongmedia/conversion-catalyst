@@ -22,7 +22,7 @@ const features = [
 
 export function Features() {
   return (
-    <section id="funcionalidades" className="py-24 lg:py-32 bg-background">
+    <section id="funcionalidades" className="bg-background" style={{paddingTop:25,paddingBottom:25}}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-3xl mb-14">
           <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">

@@ -25,7 +25,7 @@ export function Cta() {
   };
 
   return (
-    <section id="cta" className="py-24 lg:py-32 bg-ink text-white relative overflow-hidden">
+    <section id="cta" className="bg-ink text-white relative overflow-hidden" style={{paddingTop:100,paddingBottom:100}}>
       <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/20 blur-3xl pointer-events-none" />
 

@@ -23,7 +23,7 @@ const steps = [
 
 export function Solution() {
   return (
-    <section id="solucao" className="py-24 lg:py-32 bg-cream relative overflow-hidden">
+    <section id="solucao" className="bg-cream relative overflow-hidden" style={{paddingTop:25,paddingBottom:25}}>
       <div className="absolute inset-0 grid-pattern opacity-40 pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-3xl mb-16 text-center mx-auto">
