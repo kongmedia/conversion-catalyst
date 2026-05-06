@@ -56,7 +56,7 @@ const pains: Pain[] = [
 
 export function Pains() {
   return (
-    <section id="dores" className="bg-background" style={{paddingTop:25,paddingBottom:25}}>
+    <section id="dores" className="bg-background" style={{paddingTop:100,paddingBottom:100}}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-3xl mb-14">
           <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">
