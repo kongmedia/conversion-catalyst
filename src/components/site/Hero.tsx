@@ -1,4 +1,4 @@
-import { ArrowRight, PlayCircle, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroMockup from "@/assets/hero-mockup.jpg";
 
 export function Hero() {
