@@ -1,21 +1,59 @@
+import { Phone, MapPin } from "lucide-react";
 import logo from "@/assets/clic-logo.webp";
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border py-12">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Clic Tecnologia" className="h-9 w-auto" />
+    <footer className="bg-white border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div>
+            <img src={logo} alt="Clic Tecnologia" className="h-10 w-auto mb-5" />
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              A plataforma de Força de Vendas que conecta seu time externo ao seu ERP, com
+              o controle, a velocidade e a inteligência que a sua operação precisa para crescer.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-primary mb-4">Menu</h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><a href="#" className="text-ink hover:text-primary transition">Home</a></li>
+              <li><a href="#dores" className="text-ink hover:text-primary transition">O Problema</a></li>
+              <li><a href="#solucao" className="text-ink hover:text-primary transition">A Plataforma</a></li>
+              <li><a href="#calculadora" className="text-ink hover:text-primary transition">Calculadora</a></li>
+              <li><a href="#planos" className="text-ink hover:text-primary transition">Planos</a></li>
+              <li><a href="#faq" className="text-ink hover:text-primary transition">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-primary mb-4">Plataforma</h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><a href="#funcionalidades" className="text-ink hover:text-primary transition">Indicadores</a></li>
+              <li><a href="#funcionalidades" className="text-ink hover:text-primary transition">Aplicativo de Pedidos</a></li>
+              <li><a href="#integracoes" className="text-ink hover:text-primary transition">Hub de Integração</a></li>
+              <li><a href="#funcionalidades" className="text-ink hover:text-primary transition">Copiloto de Vendas</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-primary mb-4">Contato</h4>
+            <ul className="space-y-3 text-sm text-ink">
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-primary flex-shrink-0" />
+                (47) 3230-0951
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <span>Cel. Vidal Ramos, 1 – Sala 101 A<br />Jardim Blumenau, Blumenau – SC</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-          <a href="#dores" className="hover:text-primary transition">Problema</a>
-          <a href="#solucao" className="hover:text-primary transition">Solução</a>
-          <a href="#calculadora" className="hover:text-primary transition">Calculadora</a>
-          <a href="#planos" className="hover:text-primary transition">Planos</a>
-          <a href="#faq" className="hover:text-primary transition">FAQ</a>
-        </div>
-        <div className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Clic Tecnologia · Blumenau, SC
+
+        <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+          <div>© {new Date().getFullYear()} Clic Tecnologia. Todos os direitos reservados.</div>
+          <div>Sankhya, TOTVS, Senior, WK, Bling e mais.</div>
         </div>
       </div>
     </footer>
