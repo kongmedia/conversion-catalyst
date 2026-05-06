@@ -6,6 +6,7 @@ import {
   Layers, RefreshCw, ListChecks, AlertTriangle, RadioTower,
   type LucideIcon,
 } from "lucide-react";
+import { openLeadModal } from "./LeadModal";
 
 type Severity = "alto" | "medio";
 type Pain = {
@@ -322,12 +323,12 @@ export function Calculator() {
                     Quero validar com um especialista da Clic.
                   </div>
                 </div>
-                <a
-                  href="#cta"
+                <button
+                  onClick={openLeadModal}
                   className="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full transition shadow-cta"
                 >
                   Falar com consultor <ArrowUpRight className="w-4 h-4" />
-                </a>
+                </button>
               </div>
             </div>
 
