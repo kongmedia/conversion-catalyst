@@ -181,7 +181,7 @@ export function Calculator() {
     : { value: calculos.roi.toFixed(0), unit: "%", sub: "no primeiro ano" };
 
   return (
-    <section id="calculadora" className="bg-cream relative overflow-hidden" style={{paddingTop:100,paddingBottom:100}}>
+    <section id="calculadora" className="bg-cream relative overflow-hidden" style={{paddingTop:25,paddingBottom:100}}>
       <div className="absolute inset-0 dot-pattern opacity-50 pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-3xl mb-12 text-center mx-auto">
