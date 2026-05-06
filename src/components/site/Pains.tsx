@@ -56,7 +56,7 @@ const pains: Pain[] = [
 
 export function Pains() {
   return (
-    <section id="dores" className="py-24 lg:py-32 bg-background">
+    <section id="dores" className="bg-background" style={{paddingTop:25,paddingBottom:25}}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-3xl mb-14">
           <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">
@@ -80,8 +80,8 @@ export function Pains() {
               className="group bg-card border border-border rounded-3xl p-7 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elevated transition-all duration-300"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary-soft flex items-center justify-center mb-5 group-hover:bg-primary transition">
-                <p.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition" />
+              <div className="w-12 h-12 bg-primary flex items-center justify-center mb-5" style={{ borderRadius: "5px" }}>
+                <p.icon className="w-5 h-5 text-white" />
               </div>
               <h3 className="font-display text-xl font-bold text-ink mb-2">{p.title}</h3>
               <p className="text-muted-foreground leading-relaxed text-sm mb-5">{p.desc}</p>
@@ -90,15 +90,6 @@ export function Pains() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-14 text-center">
-          <a
-            href="#calculadora"
-            className="inline-flex items-center gap-2 text-ink font-semibold text-lg hover:text-primary transition"
-          >
-            Quer ver quanto isso custa na sua operação? Use a calculadora abaixo →
-          </a>
         </div>
       </div>
     </section>

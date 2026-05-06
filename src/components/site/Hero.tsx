@@ -1,4 +1,4 @@
-import { ArrowRight, PlayCircle, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroMockup from "@/assets/hero-mockup.jpg";
 
 export function Hero() {
@@ -7,14 +7,13 @@ export function Hero() {
       <div className="absolute inset-0 dot-pattern opacity-60 pointer-events-none" />
       <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center" style={{ paddingTop: 100, paddingBottom: 100 }}>
         <div className="lg:col-span-7 animate-fade-up">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-soft text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary text-primary-foreground rounded-[5px] text-xs font-bold uppercase tracking-wider mb-6">
             Plataforma N°1 de força de vendas para distribuidoras
           </div>
 
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] text-ink mb-6">
+          <h1 className="font-display font-bold leading-[1.02] text-ink mb-6" style={{ fontSize: "58px" }}>
             Tire pedidos em <span className="gradient-text italic">segundos</span>.
             <br />
             Não em horas.
@@ -33,29 +32,6 @@ export function Hero() {
             >
               Agendar demonstração gratuita <ArrowRight className="w-5 h-5" />
             </a>
-            <a
-              href="#solucao"
-              className="inline-flex items-center gap-2 text-ink font-semibold hover:text-primary transition"
-            >
-              <PlayCircle className="w-5 h-5" />
-              Ver como funciona em 90 segundos
-            </a>
-          </div>
-
-          <div className="pt-8 border-t border-border">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium mb-4">
-              Mais de 500 distribuidoras confiam na Clic
-            </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 opacity-70">
-              {["Criativa", "D'Itália", "Nuty", "Coréia", "Sankhya", "TOTVS"].map((b) => (
-                <span
-                  key={b}
-                  className="font-display text-lg font-bold text-ink/60"
-                >
-                  {b}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
 

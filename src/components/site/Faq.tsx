@@ -31,7 +31,7 @@ const faqs = [
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="py-24 lg:py-32 bg-background">
+    <section id="faq" className="bg-background" style={{paddingTop:25,paddingBottom:100}}>
       <div className="max-w-4xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-14">
           <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">

@@ -180,7 +180,7 @@ export function Calculator() {
     : { value: calculos.roi.toFixed(0), unit: "%", sub: "no primeiro ano" };
 
   return (
-    <section id="calculadora" className="py-24 lg:py-32 bg-cream relative overflow-hidden">
+    <section id="calculadora" className="bg-cream relative overflow-hidden" style={{paddingTop:25,paddingBottom:100}}>
       <div className="absolute inset-0 dot-pattern opacity-50 pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-3xl mb-12">
@@ -411,8 +411,8 @@ function PilarCard({
     <div className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-soft transition">
       <button onClick={onToggle} className="w-full p-5 flex items-center gap-4 text-left hover:bg-muted/50 transition">
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 font-bold font-display"
-          style={{ background: pilar.colorSoft, color: pilar.color }}
+          className="w-12 h-12 flex items-center justify-center flex-shrink-0 font-bold font-display"
+          style={{ background: pilar.colorSoft, color: pilar.color, borderRadius: "5px" }}
         >
           {pilar.itens.length}
         </div>
@@ -450,7 +450,7 @@ function PilarCard({
               return (
                 <div key={item.n} className="bg-card rounded-xl p-4 border border-transparent hover:border-border transition">
                   <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 border border-border flex items-center justify-center flex-shrink-0 rounded-lg bg-card">
+                    <div className="w-9 h-9 border border-border flex items-center justify-center flex-shrink-0 bg-card" style={{ borderRadius: "5px" }}>
                       <Icon className="w-4 h-4" style={{ color: pilar.color }} />
                     </div>
                     <div className="flex-1 min-w-0">
