@@ -46,7 +46,7 @@ export function Integrations() {
               key={i}
               src={erp.logo}
               alt={erp.name}
-              className="h-12 md:h-14 w-auto object-contain opacity-80 hover:opacity-100 transition px-4 flex-shrink-0"
+              className="h-14 md:h-[68px] w-auto object-contain opacity-80 hover:opacity-100 transition px-4 flex-shrink-0"
               loading="lazy"
             />
           ))}

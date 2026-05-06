@@ -64,7 +64,7 @@ export function LeadModal() {
       onClick={() => setOpen(false)}
     >
       <div
-        className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl my-8"
+        className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl my-8"
         onClick={(e) => e.stopPropagation()}
       >
         <button
