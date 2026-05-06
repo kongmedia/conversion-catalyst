@@ -29,10 +29,10 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-primary mb-4">Plataforma</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="#funcionalidades" className="text-ink hover:text-primary transition">Indicadores</a></li>
-              <li><a href="#funcionalidades" className="text-ink hover:text-primary transition">Aplicativo de Pedidos</a></li>
-              <li><a href="#integracoes" className="text-ink hover:text-primary transition">Hub de Integração</a></li>
-              <li><a href="#funcionalidades" className="text-ink hover:text-primary transition">Copiloto de Vendas</a></li>
+              <li><a href="https://clictecnologia.com.br/diferencial/indicadores-de-vendas/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-primary transition">Indicadores</a></li>
+              <li><a href="https://clictecnologia.com.br/diferencial/aplicativo-de-pedidos/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-primary transition">Aplicativo de Pedidos</a></li>
+              <li><a href="https://clictecnologia.com.br/diferencial/hub-de-integracao/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-primary transition">Hub de Integração</a></li>
+              <li><a href="https://clictecnologia.com.br/diferencial/copiloto-de-vendas/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-primary transition">Copiloto de Vendas</a></li>
             </ul>
           </div>
 
