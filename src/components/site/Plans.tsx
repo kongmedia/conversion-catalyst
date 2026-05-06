@@ -1,4 +1,5 @@
 import { Check, ArrowRight } from "lucide-react";
+import { openLeadModal } from "./LeadModal";
 
 const plans = [
   {
@@ -92,8 +93,8 @@ export function Plans() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#cta"
+              <button
+                onClick={openLeadModal}
                 className={`w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold transition ${
                   p.highlight
                     ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-cta"
@@ -101,7 +102,7 @@ export function Plans() {
                 }`}
               >
                 Falar com consultor <ArrowRight className="w-4 h-4" />
-              </a>
+              </button>
             </div>
           ))}
         </div>
