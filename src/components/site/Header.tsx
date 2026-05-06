@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import logo from "@/assets/clic-logo.webp";
+import { openLeadModal } from "./LeadModal";
 
 const links = [
   { href: "#dores", label: "O Problema" },
@@ -25,15 +26,13 @@ export function Header() {
     <>
       <div className="bg-primary text-primary-foreground text-center text-sm py-2 px-4">
         Veja uma demonstração grátis.{" "}
-        <a href="#cta" className="font-semibold underline-offset-4 hover:underline">
+        <button onClick={openLeadModal} className="font-semibold underline-offset-4 hover:underline">
           Acessar →
-        </a>
+        </button>
       </div>
       <header
-        className={`sticky top-0 z-40 transition-all ${
-          scrolled
-            ? "bg-background/90 backdrop-blur-md border-b border-border shadow-soft"
-            : "bg-background"
+        className={`sticky top-0 z-40 transition-all bg-white ${
+          scrolled ? "backdrop-blur-md border-b border-border shadow-soft" : ""
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-18 py-3 flex items-center justify-between gap-4">
@@ -49,12 +48,12 @@ export function Header() {
             ))}
           </nav>
 
-          <a
-            href="#cta"
+          <button
+            onClick={openLeadModal}
             className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-semibold rounded-full transition shadow-cta"
           >
             Demonstração grátis <ArrowUpRight className="w-4 h-4" />
-          </a>
+          </button>
 
           <button
             onClick={() => setOpen(!open)}
@@ -66,7 +65,7 @@ export function Header() {
         </div>
 
         {open && (
-          <div className="lg:hidden border-t border-border bg-background">
+          <div className="lg:hidden border-t border-border bg-white">
             <nav className="flex flex-col p-4 gap-1">
               {links.map((l) => (
                 <a
@@ -78,13 +77,12 @@ export function Header() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href="#cta"
-                onClick={() => setOpen(false)}
+              <button
+                onClick={() => { setOpen(false); openLeadModal(); }}
                 className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-semibold rounded-full"
               >
                 Demonstração grátis <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </button>
             </nav>
           </div>
         )}
