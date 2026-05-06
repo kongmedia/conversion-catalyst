@@ -9,8 +9,7 @@ export function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 animate-fade-up">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-soft text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary text-primary-foreground rounded-[5px] text-xs font-bold uppercase tracking-wider mb-6">
             Plataforma N°1 de força de vendas para distribuidoras
           </div>
 
