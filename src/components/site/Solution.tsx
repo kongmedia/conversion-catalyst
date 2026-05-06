@@ -1,4 +1,5 @@
 import { Smartphone, Database, Globe, ArrowRight } from "lucide-react";
+import { openLeadModal } from "./LeadModal";
 
 const steps = [
   {
@@ -23,7 +24,7 @@ const steps = [
 
 export function Solution() {
   return (
-    <section id="solucao" className="bg-cream relative overflow-hidden" style={{paddingTop:25,paddingBottom:25}}>
+    <section id="solucao" className="bg-cream relative overflow-hidden" style={{paddingTop:100,paddingBottom:100}}>
       <div className="absolute inset-0 grid-pattern opacity-40 pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-3xl mb-16 text-center mx-auto">
@@ -41,8 +42,8 @@ export function Solution() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-2 relative">
-          {steps.map((s, i) => (
+        <div className="grid md:grid-cols-3 gap-6 relative">
+          {steps.map((s) => (
             <div key={s.n} className="relative">
               <div className="bg-background border border-border rounded-3xl p-8 h-full hover:shadow-elevated transition-all duration-300">
                 <div className="flex items-center justify-between mb-6">
@@ -54,20 +55,17 @@ export function Solution() {
                 <h3 className="font-display text-xl font-bold text-ink mb-3">{s.title}</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">{s.desc}</p>
               </div>
-              {i < steps.length - 1 && (
-                <ArrowRight className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 w-6 h-6 text-primary z-10" />
-              )}
             </div>
           ))}
         </div>
 
         <div className="mt-14 text-center">
-          <a
-            href="#cta"
+          <button
+            onClick={openLeadModal}
             className="inline-flex items-center gap-2 px-7 py-4 bg-ink hover:bg-ink/90 text-primary-foreground font-semibold rounded-full transition shadow-soft"
           >
             Ver demonstração ao vivo <ArrowRight className="w-5 h-5" />
-          </a>
+          </button>
         </div>
       </div>
     </section>

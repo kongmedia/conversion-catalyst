@@ -6,6 +6,7 @@ import {
   Layers, RefreshCw, ListChecks, AlertTriangle, RadioTower,
   type LucideIcon,
 } from "lucide-react";
+import { openLeadModal } from "./LeadModal";
 
 type Severity = "alto" | "medio";
 type Pain = {
@@ -180,10 +181,10 @@ export function Calculator() {
     : { value: calculos.roi.toFixed(0), unit: "%", sub: "no primeiro ano" };
 
   return (
-    <section id="calculadora" className="bg-cream relative overflow-hidden" style={{paddingTop:25,paddingBottom:100}}>
+    <section id="calculadora" className="bg-cream relative overflow-hidden" style={{paddingTop:100,paddingBottom:100}}>
       <div className="absolute inset-0 dot-pattern opacity-50 pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl mb-12">
+        <div className="max-w-3xl mb-12 text-center mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-soft text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-5">
             <Sparkles className="w-3.5 h-3.5" />
             Calculadora · 20 dores · 4 pilares
@@ -322,12 +323,12 @@ export function Calculator() {
                     Quero validar com um especialista da Clic.
                   </div>
                 </div>
-                <a
-                  href="#cta"
+                <button
+                  onClick={openLeadModal}
                   className="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full transition shadow-cta"
                 >
                   Falar com consultor <ArrowUpRight className="w-4 h-4" />
-                </a>
+                </button>
               </div>
             </div>
 

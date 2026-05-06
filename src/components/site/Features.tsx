@@ -22,18 +22,20 @@ const features = [
 
 export function Features() {
   return (
-    <section id="funcionalidades" className="bg-background" style={{paddingTop:25,paddingBottom:25}}>
+    <section id="funcionalidades" className="bg-cream" style={{paddingTop:25,paddingBottom:100}}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl mb-14">
-          <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">
-            Funcionalidades
+        <div className="grid lg:grid-cols-2 gap-10 items-end mb-14">
+          <div>
+            <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">
+              Funcionalidades
+            </div>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-ink leading-tight">
+              Tudo o que seu representante precisa.
+              <br />
+              <span className="gradient-text">Nada que ele não use.</span>
+            </h2>
           </div>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-ink mb-5 leading-tight">
-            Tudo o que seu representante precisa.
-            <br />
-            <span className="gradient-text">Nada que ele não use.</span>
-          </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base lg:text-lg text-muted-foreground lg:pl-6 lg:border-l lg:border-border">
             Construído com mais de 500 distribuidoras. Cada funcionalidade resolve uma dor real.
             Cada tela foi testada em campo.
           </p>
@@ -43,7 +45,7 @@ export function Features() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="bg-card border border-border rounded-2xl p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
+              className="bg-background border border-border rounded-2xl p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-10 h-10 bg-primary flex items-center justify-center mb-4" style={{ borderRadius: "5px" }}>
                 <f.icon className="w-4 h-4 text-white" />

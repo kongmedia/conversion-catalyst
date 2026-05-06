@@ -25,7 +25,7 @@ export function Social() {
     <section className="bg-ink text-white relative overflow-hidden" style={{paddingTop:100,paddingBottom:100}}>
       <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl mb-14">
+        <div className="max-w-3xl mb-14 text-center mx-auto">
           <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">
             Provas Sociais
           </div>
