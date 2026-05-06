@@ -45,7 +45,7 @@ export function Features() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="bg-card border border-border rounded-2xl p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
+              className="bg-background border border-border rounded-2xl p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-10 h-10 bg-primary flex items-center justify-center mb-4" style={{ borderRadius: "5px" }}>
                 <f.icon className="w-4 h-4 text-white" />
