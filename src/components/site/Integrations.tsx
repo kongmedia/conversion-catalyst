@@ -7,7 +7,7 @@ const erps = [
 export function Integrations() {
   const loop = [...erps, ...erps];
   return (
-    <section id="integracoes" style={{ paddingTop: 100, paddingBottom: 100 }} className="bg-background overflow-hidden">
+    <section id="integracoes" style={{ paddingTop: 100, paddingBottom: 25 }} className="bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-3xl mb-14 text-center mx-auto">
           <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">
