@@ -411,8 +411,8 @@ function PilarCard({
     <div className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-soft transition">
       <button onClick={onToggle} className="w-full p-5 flex items-center gap-4 text-left hover:bg-muted/50 transition">
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 font-bold font-display"
-          style={{ background: pilar.colorSoft, color: pilar.color }}
+          className="w-12 h-12 flex items-center justify-center flex-shrink-0 font-bold font-display"
+          style={{ background: pilar.colorSoft, color: pilar.color, borderRadius: "5px" }}
         >
           {pilar.itens.length}
         </div>
