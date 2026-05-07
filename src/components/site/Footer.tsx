@@ -5,10 +5,10 @@ export function Footer() {
   return (
     <footer className="bg-white border-t border-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div>
-            <img src={logo} alt="Clic Tecnologia" className="h-10 w-auto mb-5" />
-            <p className="text-sm text-muted-foreground leading-relaxed">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+          <div className="col-span-2 lg:col-span-1 text-center md:text-left">
+            <img src={logo} alt="Clic Tecnologia" className="h-12 md:h-10 w-auto mb-5 mx-auto md:mx-0" />
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-md mx-auto md:mx-0">
               A plataforma de Força de Vendas que conecta seu time externo ao seu ERP, com
               o controle, a velocidade e a inteligência que a sua operação precisa para crescer.
             </p>
@@ -36,14 +36,14 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-2 lg:col-span-1 text-center md:text-left">
             <h4 className="font-display font-bold text-primary mb-4">Contato</h4>
-            <ul className="space-y-3 text-sm text-ink">
-              <li className="flex items-center gap-2">
+            <ul className="space-y-3 text-sm text-ink inline-block text-left">
+              <li className="flex items-center gap-2 justify-center md:justify-start">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
                 (47) 3230-0951
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2 justify-center md:justify-start">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>Cel. Vidal Ramos, 1 – Sala 101 A<br />Jardim Blumenau, Blumenau – SC</span>
               </li>
