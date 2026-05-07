@@ -42,7 +42,7 @@ export function Hero() {
           <img
             src={heroMockup}
             alt="App ClicVenda em smartphone mostrando tela de pedido"
-            className="relative w-full max-w-[576px] mx-auto animate-float"
+            className="relative w-full max-w-[576px] lg:max-w-[720px] mx-auto animate-float"
           />
         </div>
       </div>
