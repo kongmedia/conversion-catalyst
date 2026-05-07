@@ -5,7 +5,7 @@ export function Cta() {
   return (
     <section id="cta" className="bg-ink text-white relative overflow-hidden" style={{paddingTop:100,paddingBottom:100}}>
       <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/20 blur-3xl pointer-events-none" />
+      
 
       <div className="relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
         <div className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">
@@ -24,7 +24,7 @@ export function Cta() {
             onClick={openLeadModal}
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full transition shadow-cta hover:scale-[1.02]"
           >
-            Quero ver o ClicVenda em ação <ArrowRight className="w-5 h-5" />
+            QUERO VER O CLICVENDA EM AÇÃO <ArrowRight className="w-5 h-5" />
           </button>
         </div>
 

@@ -15,7 +15,9 @@ export function Hero() {
           </div>
 
           <h1 className="font-display font-bold leading-[1.05] text-ink mb-6 text-[40px] sm:text-5xl lg:text-[58px]">
-            Tire pedidos em <span className="text-primary">segundos</span>.
+            Tire pedidos
+            <br />
+            em <span className="text-primary">segundos</span>,
             <br />
             não em horas.
           </h1>
@@ -31,7 +33,7 @@ export function Hero() {
               onClick={openLeadModal}
               className="inline-flex items-center gap-2 px-7 py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full transition shadow-cta hover:scale-[1.02] hover:shadow-elevated"
             >
-              Agendar demonstração gratuita <ArrowRight className="w-5 h-5" />
+              AGENDAR DEMONSTRAÇÃO GRATUITA <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
