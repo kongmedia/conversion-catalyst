@@ -221,42 +221,47 @@ export function Calculator() {
               </div>
             </Card>
 
-            <Card>
-              <CardHeader number="02" title="Investimento Clic" />
-              <div className="mt-6">
-                <SliderInput label="Mensalidade ClicTecnologia" value={investimentoMensal} onChange={setInvestimentoMensal}
-                  min={690} max={35000} step={100} format={(v) => fmt(v)} />
-              </div>
-              <div className="mt-5 grid grid-cols-2 gap-2">
-                <Mini label="Anual" value={fmt(calculos.investimentoAnual)} />
-                <Mini label="% do faturamento" value={`${((calculos.investimentoAnual / (faturamento * 1_000_000)) * 100).toFixed(2)}%`} />
-              </div>
-            </Card>
+            {/* Etapas 02 e 03 ocultas — lógica preservada */}
+            {false && (
+              <>
+                <Card>
+                  <CardHeader number="02" title="Investimento Clic" />
+                  <div className="mt-6">
+                    <SliderInput label="Mensalidade ClicTecnologia" value={investimentoMensal} onChange={setInvestimentoMensal}
+                      min={690} max={35000} step={100} format={(v) => fmt(v)} />
+                  </div>
+                  <div className="mt-5 grid grid-cols-2 gap-2">
+                    <Mini label="Anual" value={fmt(calculos.investimentoAnual)} />
+                    <Mini label="% do faturamento" value={`${((calculos.investimentoAnual / (faturamento * 1_000_000)) * 100).toFixed(2)}%`} />
+                  </div>
+                </Card>
 
-            <button
-              onClick={() => setShowAdvanced(!showAdvanced)}
-              className="w-full text-left bg-card border border-border hover:border-primary p-4 rounded-2xl transition flex items-center justify-between"
-            >
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-soft text-primary font-bold">03</span>
-                <span className="text-sm font-semibold text-ink">Premissas avançadas</span>
-              </div>
-              <ChevronRight className={`w-4 h-4 text-muted-foreground transition ${showAdvanced ? "rotate-90" : ""}`} />
-            </button>
+                <button
+                  onClick={() => setShowAdvanced(!showAdvanced)}
+                  className="w-full text-left bg-card border border-border hover:border-primary p-4 rounded-2xl transition flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-soft text-primary font-bold">03</span>
+                    <span className="text-sm font-semibold text-ink">Premissas avançadas</span>
+                  </div>
+                  <ChevronRight className={`w-4 h-4 text-muted-foreground transition ${showAdvanced ? "rotate-90" : ""}`} />
+                </button>
 
-            {showAdvanced && (
-              <Card>
-                <div className="space-y-5">
-                  <SliderInput small label="Tempo de retrabalho/pedido" value={tempoRetrabalhoMin}
-                    onChange={setTempoRetrabalhoMin} min={3} max={25} step={1} format={(v) => `${v} min`} />
-                  <SliderInput small label="Margem bruta" value={margemBruta}
-                    onChange={setMargemBruta} min={10} max={50} step={1} format={(v) => `${v}%`} />
-                  <SliderInput small label="Pedidos perdidos" value={pedidosPerdidosPct}
-                    onChange={setPedidosPerdidosPct} min={0.5} max={5} step={0.1} format={(v) => `${v}% fat.`} />
-                  <SliderInput small label="Margem perdida em precificação" value={margemPerdidaPct}
-                    onChange={setMargemPerdidaPct} min={0.2} max={3} step={0.1} format={(v) => `${v}% fat.`} />
-                </div>
-              </Card>
+                {showAdvanced && (
+                  <Card>
+                    <div className="space-y-5">
+                      <SliderInput small label="Tempo de retrabalho/pedido" value={tempoRetrabalhoMin}
+                        onChange={setTempoRetrabalhoMin} min={3} max={25} step={1} format={(v) => `${v} min`} />
+                      <SliderInput small label="Margem bruta" value={margemBruta}
+                        onChange={setMargemBruta} min={10} max={50} step={1} format={(v) => `${v}%`} />
+                      <SliderInput small label="Pedidos perdidos" value={pedidosPerdidosPct}
+                        onChange={setPedidosPerdidosPct} min={0.5} max={5} step={0.1} format={(v) => `${v}% fat.`} />
+                      <SliderInput small label="Margem perdida em precificação" value={margemPerdidaPct}
+                        onChange={setMargemPerdidaPct} min={0.2} max={3} step={0.1} format={(v) => `${v}% fat.`} />
+                    </div>
+                  </Card>
+                )}
+              </>
             )}
           </div>
 
@@ -293,19 +298,21 @@ export function Calculator() {
               </div>
             </div>
 
-            {/* Pilares */}
-            <div className="space-y-3">
-              {calculos.pilares.map((pilar) => (
-                <PilarCard
-                  key={pilar.id}
-                  pilar={pilar}
-                  aberto={pilaresAbertos[pilar.id]}
-                  onToggle={() => togglePilar(pilar.id)}
-                  ganhoTotal={calculos.ganhoTotal}
-                  fmt={fmt}
-                />
-              ))}
-            </div>
+            {/* Pilares ocultos — lógica preservada */}
+            {false && (
+              <div className="space-y-3">
+                {calculos.pilares.map((pilar) => (
+                  <PilarCard
+                    key={pilar.id}
+                    pilar={pilar}
+                    aberto={pilaresAbertos[pilar.id]}
+                    onToggle={() => togglePilar(pilar.id)}
+                    ganhoTotal={calculos.ganhoTotal}
+                    fmt={fmt}
+                  />
+                ))}
+              </div>
+            )}
 
             {/* Síntese + CTA */}
             <div className="bg-card rounded-3xl p-7 border border-border">
