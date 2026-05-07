@@ -67,26 +67,26 @@ export function Plans() {
                 key={c.audience}
                 className={`relative rounded-3xl p-8 transition-all hover:-translate-y-1 ${
                   c.highlight
-                    ? "bg-primary/5 border-2 border-primary shadow-elevated lg:scale-105"
+                    ? "bg-primary text-primary-foreground shadow-elevated lg:scale-105"
                     : "bg-card border border-border"
                 }`}
               >
                 {c.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-full uppercase tracking-wider">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-ink text-white text-xs font-bold rounded-full uppercase tracking-wider">
                     Maior impacto
                   </div>
                 )}
-                <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground mb-3">
-                  <Icon className="w-5 h-5 text-primary" />
+                <div className={`flex items-center gap-2 text-sm font-semibold mb-3 ${c.highlight ? "text-white/80" : "text-muted-foreground"}`}>
+                  <Icon className={`w-5 h-5 ${c.highlight ? "text-white" : "text-primary"}`} />
                   {c.audience}
                 </div>
-                <div className="font-display text-2xl font-bold text-ink mb-1">{c.title}</div>
-                <p className="text-sm text-muted-foreground mb-6">{c.subtitle}</p>
+                <div className={`font-display text-2xl font-bold mb-1 ${c.highlight ? "text-white" : "text-ink"}`}>{c.title}</div>
+                <p className={`text-sm mb-6 ${c.highlight ? "text-white/80" : "text-muted-foreground"}`}>{c.subtitle}</p>
                 <ul className="space-y-3 mb-8">
                   {c.items.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm">
-                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
-                      <span className="text-ink">{f}</span>
+                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${c.highlight ? "text-white" : "text-primary"}`} />
+                      <span className={c.highlight ? "text-white" : "text-ink"}>{f}</span>
                     </li>
                   ))}
                 </ul>
