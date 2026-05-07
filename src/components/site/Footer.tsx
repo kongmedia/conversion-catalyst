@@ -36,14 +36,14 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-2 lg:col-span-1 text-center md:text-left">
             <h4 className="font-display font-bold text-primary mb-4">Contato</h4>
-            <ul className="space-y-3 text-sm text-ink">
-              <li className="flex items-center gap-2">
+            <ul className="space-y-3 text-sm text-ink inline-block text-left">
+              <li className="flex items-center gap-2 justify-center md:justify-start">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
                 (47) 3230-0951
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2 justify-center md:justify-start">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>Cel. Vidal Ramos, 1 – Sala 101 A<br />Jardim Blumenau, Blumenau – SC</span>
               </li>
