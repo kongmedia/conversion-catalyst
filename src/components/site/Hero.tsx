@@ -10,8 +10,10 @@ export function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center" style={{ paddingTop: 80, paddingBottom: 80 }}>
         <div className="lg:col-span-7 animate-fade-up text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-[5px] text-xs font-bold uppercase tracking-wider mb-6 max-w-[260px] sm:max-w-none text-center sm:text-left leading-snug">
-            Plataforma N°1 de força de vendas para distribuidoras
+          <div className="mb-6 mx-auto lg:mx-0 max-w-[240px] sm:max-w-none w-fit">
+            <div className="px-4 py-2.5 bg-primary text-primary-foreground rounded-[5px] text-xs font-bold uppercase tracking-wider text-center sm:text-left leading-snug">
+              Plataforma N°1 de força de vendas para distribuidoras
+            </div>
           </div>
 
           <h1 className="font-display font-bold leading-[1.05] text-ink mb-6 text-[40px] sm:text-5xl lg:text-[58px]">
