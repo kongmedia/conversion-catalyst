@@ -5,10 +5,10 @@ export function Footer() {
   return (
     <footer className="bg-white border-t border-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div>
-            <img src={logo} alt="Clic Tecnologia" className="h-10 w-auto mb-5" />
-            <p className="text-sm text-muted-foreground leading-relaxed">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+          <div className="col-span-2 lg:col-span-1 text-center md:text-left">
+            <img src={logo} alt="Clic Tecnologia" className="h-12 md:h-10 w-auto mb-5 mx-auto md:mx-0" />
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-md mx-auto md:mx-0">
               A plataforma de Força de Vendas que conecta seu time externo ao seu ERP, com
               o controle, a velocidade e a inteligência que a sua operação precisa para crescer.
             </p>
