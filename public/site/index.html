@@ -541,9 +541,45 @@ const testimonials = [
 const erps = ['sankhya','totvs','senior','bling','tiny','sap'];
 
 const plans = [
-  { name: 'Starter', price: 'R$ 690', desc: 'Para distribuidoras começando a profissionalizar a operação.', features: ['Até 5 representantes','Aplicativo de pedidos','Catálogo offline','Integração com 1 ERP','Suporte por e-mail'] },
-  { name: 'Growth', price: 'R$ 2.490', desc: 'Operações em crescimento que precisam de visibilidade total.', features: ['Até 20 representantes','Tudo do Starter','Portal B2B do cliente','Indicadores em tempo real','Roteirização e check-in','Suporte prioritário'], highlight: true },
-  { name: 'Enterprise', price: 'Sob consulta', desc: 'Para indústrias e distribuidoras com operação complexa.', features: ['Representantes ilimitados','Tudo do Growth','Copiloto de vendas IA','Hub de integração full','SLA dedicado e CSM'] },
+  {
+    icon: 'users',
+    audience: 'Representantes',
+    title: 'Ganha tempo',
+    subtitle: 'Mais visitas, menos burocracia',
+    items: [
+      'Pedido em segundos, mesmo offline',
+      'Carteira e histórico organizados',
+      'Catálogo completo no bolso',
+      'Comissão calculada na hora',
+      'Sem digitação dupla no escritório',
+    ],
+  },
+  {
+    icon: 'bar-chart-3',
+    audience: 'Gestores',
+    title: 'Ganha controle',
+    subtitle: 'Visão total do que acontece em campo',
+    items: [
+      'Pedidos em tempo real, sem esperar fechamento',
+      'Meta e ranking ao vivo',
+      'Roteiro e check-in auditáveis',
+      'Análise por região e curva ABC',
+      'Política comercial centralizada',
+    ],
+    highlight: true,
+  },
+  {
+    icon: 'smile',
+    audience: 'Clientes B2B',
+    title: 'Ganha experiência',
+    subtitle: 'Atendimento ágil que fideliza',
+    items: [
+      'Pedido processado em minutos',
+      'Histórico de compra disponível na visita',
+      'Política comercial sempre correta',
+      'Status de entrega e NF online',
+    ],
+  },
 ];
 
 const faqs = [
