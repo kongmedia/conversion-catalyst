@@ -38,7 +38,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="lg:col-span-5 relative animate-fade-up" style={{ animationDelay: "200ms" }}>
+        <div className="lg:col-span-6 relative animate-fade-up" style={{ animationDelay: "200ms" }}>
           <img
             src={heroMockup}
             alt="App ClicVenda em smartphone mostrando tela de pedido"
