@@ -101,7 +101,7 @@ export function Plans() {
                     : "bg-ink hover:bg-ink/90 text-white"
                 }`}
               >
-                Falar com consultor <ArrowRight className="w-4 h-4" />
+                FALAR COM CONSULTOR <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           ))}
