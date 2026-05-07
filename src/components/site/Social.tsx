@@ -90,7 +90,7 @@ export function Social() {
             Provas Sociais
           </div>
           <h2 className="font-display text-4xl lg:text-5xl font-bold leading-tight">
-            Mais de 500 distribuidoras já tiram seus pedidos pelo{" "}
+            Mais de 100 distribuidoras já tiram seus pedidos pelo{" "}
             <span className="gradient-text">ClicVenda</span>.
           </h2>
         </div>
