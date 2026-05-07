@@ -4,11 +4,11 @@ import { Plus } from "lucide-react";
 const faqs = [
   {
     q: "Quanto tempo leva para implantar o ClicVenda?",
-    a: "Em média 30 dias para estar rodando integrado ao seu ERP. Casos simples (Bling, Omie, Tiny) ficam prontos em 7 dias.",
+    a: "Em média 60 dias para estar rodando integrado ao seu ERP.",
   },
   {
     q: "Meu ERP é compatível?",
-    a: "O hub de integração Clic é nativo para Sankhya, TOTVS Protheus/RM, Sênior, SAP B1, WK, Bling, Omie e mais. Se o seu não está na lista, a Clic constrói a integração para você.",
+    a: "O hub de integração Clic é nativo para Sankhya, Sênior, WK e Bling.",
   },
   {
     q: "O app funciona sem internet?",
@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "Como é cobrado o ClicVenda?",
-    a: "Mensalidade fixa baseada no plano e número de representantes ativos. Sem fidelidade. Sem taxa de implantação na maioria dos planos.",
+    a: "Mensalidade fixa baseada no plano e número de representantes ativos. Sem fidelidade.",
   },
   {
     q: "Vocês oferecem treinamento?",
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "Como funciona o suporte?",
-    a: "Suporte humano via WhatsApp, e-mail e telefone. Planos Growth e Enterprise contam com CSM dedicado e SLA garantido.",
+    a: "Suporte humano via WhatsApp, e-mail e telefone.",
   },
 ];
 

@@ -1,21 +1,17 @@
 import sankhya from "@/assets/erps/sankhya.png";
 import totvs from "@/assets/erps/totvs.png";
 import senior from "@/assets/erps/senior.png";
-import microsiga from "@/assets/erps/microsiga.png";
 import bling from "@/assets/erps/bling.png";
 import tiny from "@/assets/erps/tiny.png";
-import omie from "@/assets/erps/omie.png";
-import contaazul from "@/assets/erps/contaazul.png";
+import sap from "@/assets/erps/sap.png";
 
 const erps = [
   { name: "Sankhya", logo: sankhya },
   { name: "TOTVS", logo: totvs },
   { name: "Senior", logo: senior },
-  { name: "Microsiga", logo: microsiga },
   { name: "Bling", logo: bling },
   { name: "Tiny", logo: tiny },
-  { name: "Omie", logo: omie },
-  { name: "ContaAzul", logo: contaazul },
+  { name: "SAP Business One", logo: sap },
 ];
 
 export function Integrations() {

@@ -241,7 +241,7 @@
           </div>
         </div>
 
-        <div class="bg-white border border-border rounded-3xl p-7">
+        <div class="hidden bg-white border border-border rounded-3xl p-7">
           <div class="flex items-baseline gap-3">
             <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-primary-soft text-primary font-bold">02</span>
             <h3 class="font-display text-2xl font-bold text-ink">Investimento Clic</h3>
@@ -259,7 +259,7 @@
           </div>
         </div>
 
-        <button id="adv-toggle" class="w-full text-left bg-white border border-border hover:border-primary p-4 rounded-2xl transition flex items-center justify-between">
+        <button id="adv-toggle" class="hidden w-full text-left bg-white border border-border hover:border-primary p-4 rounded-2xl transition flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-soft text-primary font-bold">03</span>
             <span class="text-sm font-semibold text-ink">Premissas avançadas</span>
@@ -270,7 +270,7 @@
           <div class="space-y-5" id="calc-adv"></div>
         </div>
 
-        <div class="bg-white border border-border rounded-3xl p-7">
+        <div class="hidden bg-white border border-border rounded-3xl p-7">
           <div class="text-[11px] uppercase tracking-[0.2em] font-mono font-bold mb-3 text-primary">Os 4 pilares</div>
           <div class="space-y-2" id="pilares-mini"></div>
         </div>
@@ -302,8 +302,8 @@
           </div>
         </div>
 
-        <!-- Decomposição -->
-        <section>
+        <!-- Decomposição (oculta) -->
+        <section class="hidden">
           <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
             <div>
               <div class="text-[11px] uppercase tracking-[0.2em] font-mono font-semibold mb-1 text-primary">Decomposição</div>
@@ -348,7 +348,7 @@
     <div class="max-w-3xl mb-14 text-center mx-auto">
       <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">Provas Sociais</div>
       <h2 class="font-display text-4xl lg:text-5xl font-bold leading-tight">
-        Mais de 500 distribuidoras já tiram seus pedidos pelo <span class="gradient-text">ClicVenda</span>.
+        Mais de 100 distribuidoras já tiram seus pedidos pelo <span class="gradient-text">ClicVenda</span>.
       </h2>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 pb-16 border-b border-white/10" id="stats-grid"></div>
@@ -520,10 +520,10 @@ const features = [
 ];
 
 const stats = [
-  { value: 500, prefix: '+', suffix: '', label: 'Distribuidoras ativas' },
+  { value: 100, prefix: '+', suffix: '', label: 'Distribuidoras ativas' },
   { value: 4000, prefix: '+', suffix: '', label: 'Representantes em campo' },
   { value: 25, prefix: '+R$ ', suffix: 'bi', label: 'Em pedidos processados' },
-  { value: 99.5, prefix: '', suffix: '%', label: 'Taxa de retenção', decimals: 1 },
+  { value: 95, prefix: '', suffix: '%', label: 'Taxa de retenção' },
 ];
 
 const testimonials = [
@@ -533,7 +533,7 @@ const testimonials = [
   { title: 'Redução de 80% do retrabalho', quote: 'O Força de Vendas nos auxiliou a diminuir 80% do retrabalho e otimizar a equipe de faturamento, permitindo que chegássemos a áreas mais remotas. Essa expansão fez nossas vendas aumentarem em 12%.', name: 'Sucos Spres', role: 'Coordenador Comercial', logo: 'assets/clients/spres.webp' },
 ];
 
-const erps = ['sankhya','totvs','senior','microsiga','bling','tiny','omie','contaazul'];
+const erps = ['sankhya','totvs','senior','bling','tiny','sap'];
 
 const plans = [
   { name: 'Starter', price: 'R$ 690', desc: 'Para distribuidoras começando a profissionalizar a operação.', features: ['Até 5 representantes','Aplicativo de pedidos','Catálogo offline','Integração com 1 ERP','Suporte por e-mail'] },
@@ -542,12 +542,12 @@ const plans = [
 ];
 
 const faqs = [
-  { q: 'Quanto tempo leva para implantar o ClicVenda?', a: 'Em média 30 dias para estar rodando integrado ao seu ERP. Casos simples (Bling, Omie, Tiny) ficam prontos em 7 dias.' },
-  { q: 'Meu ERP é compatível?', a: 'O hub de integração Clic é nativo para Sankhya, TOTVS Protheus/RM, Sênior, SAP B1, WK, Bling, Omie e mais. Se o seu não está na lista, a Clic constrói a integração para você.' },
+  { q: 'Quanto tempo leva para implantar o ClicVenda?', a: 'Em média 60 dias para estar rodando integrado ao seu ERP.' },
+  { q: 'Meu ERP é compatível?', a: 'O hub de integração Clic é nativo para Sankhya, Sênior, WK e Bling.' },
   { q: 'O app funciona sem internet?', a: 'Sim. O catálogo, preços e clientes ficam disponíveis offline. Os pedidos sincronizam automaticamente quando o representante voltar a ter sinal.' },
-  { q: 'Como é cobrado o ClicVenda?', a: 'Mensalidade fixa baseada no plano e número de representantes ativos. Sem fidelidade. Sem taxa de implantação na maioria dos planos.' },
+  { q: 'Como é cobrado o ClicVenda?', a: 'Mensalidade fixa baseada no plano e número de representantes ativos. Sem fidelidade.' },
   { q: 'Vocês oferecem treinamento?', a: 'Sim. Treinamento completo para representantes, gestores e back office incluído na implantação. Material em vídeo e suporte humano.' },
-  { q: 'Como funciona o suporte?', a: 'Suporte humano via WhatsApp, e-mail e telefone. Planos Growth e Enterprise contam com CSM dedicado e SLA garantido.' },
+  { q: 'Como funciona o suporte?', a: 'Suporte humano via WhatsApp, e-mail e telefone.' },
 ];
 
 // ============ RENDER ESTÁTICO ============

@@ -5,10 +5,10 @@ import supremoLogo from "@/assets/clients/supremo.webp";
 import spresLogo from "@/assets/clients/spres.webp";
 
 const stats: { value: number; prefix: string; suffix: string; label: string; decimals?: number }[] = [
-  { value: 500, prefix: "+", suffix: "", label: "Distribuidoras ativas" },
+  { value: 100, prefix: "+", suffix: "", label: "Distribuidoras ativas" },
   { value: 4000, prefix: "+", suffix: "", label: "Representantes em campo" },
   { value: 25, prefix: "+R$ ", suffix: "bi", label: "Em pedidos processados" },
-  { value: 99.5, prefix: "", suffix: "%", label: "Taxa de retenção", decimals: 1 },
+  { value: 95, prefix: "", suffix: "%", label: "Taxa de retenção" },
 ];
 
 const testimonials = [
@@ -90,7 +90,7 @@ export function Social() {
             Provas Sociais
           </div>
           <h2 className="font-display text-4xl lg:text-5xl font-bold leading-tight">
-            Mais de 500 distribuidoras já tiram seus pedidos pelo{" "}
+            Mais de 100 distribuidoras já tiram seus pedidos pelo{" "}
             <span className="gradient-text">ClicVenda</span>.
           </h2>
         </div>
