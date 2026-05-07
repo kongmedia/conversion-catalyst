@@ -9,7 +9,7 @@ export function Hero() {
       <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center" style={{ paddingTop: 80, paddingBottom: 80 }}>
-        <div className="lg:col-span-6 animate-fade-up text-center lg:text-left"></div>
+        <div className="lg:col-span-6 animate-fade-up text-center lg:text-left">
           <div className="inline-block px-4 py-2.5 bg-primary text-primary-foreground rounded-[5px] text-xs font-bold uppercase tracking-wider mb-6 leading-snug">
             Plataforma N°1 de força de vendas para distribuidoras
           </div>
