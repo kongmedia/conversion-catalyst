@@ -4,7 +4,7 @@ import claricelogo from "@/assets/clients/clarice.webp";
 import supremoLogo from "@/assets/clients/supremo.webp";
 import spresLogo from "@/assets/clients/spres.webp";
 
-const stats = [
+const stats: { value: number; prefix: string; suffix: string; label: string; decimals?: number }[] = [
   { value: 500, prefix: "+", suffix: "", label: "Distribuidoras ativas" },
   { value: 4000, prefix: "+", suffix: "", label: "Representantes em campo" },
   { value: 25, prefix: "+R$ ", suffix: "bi", label: "Em pedidos processados" },
