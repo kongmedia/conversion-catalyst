@@ -67,12 +67,12 @@ export function Plans() {
                 key={c.audience}
                 className={`relative rounded-3xl p-8 transition-all hover:-translate-y-1 ${
                   c.highlight
-                    ? "bg-primary text-primary-foreground shadow-elevated lg:scale-105"
+                    ? "bg-ink text-white shadow-elevated lg:scale-105"
                     : "bg-card border border-border"
                 }`}
               >
                 {c.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-ink text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-full uppercase tracking-wider">
                     Maior impacto
                   </div>
                 )}
