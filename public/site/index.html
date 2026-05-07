@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClicVenda — Tire pedidos em segundos. Não em horas.</title>
+<meta name="description" content="App de pedidos para distribuidoras e indústrias B2B. Integração nativa com seu ERP, sem retrabalho, sem erro. Mais de 500 clientes confiam na Clic." />
+<meta property="og:title" content="ClicVenda — App de Pedidos B2B" />
+<meta property="og:description" content="Transforme o pedido por WhatsApp em fluxo automatizado entre rep, ERP e cliente." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="assets/clic-logo.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#F28E26',
+          'primary-soft': '#FFF1DD',
+          'primary-glow': '#FFA94D',
+          ink: '#1C3661',
+          cream: '#FAF8E9',
+          border: '#E8E3CF',
+          muted: '#F4F1DE',
+          'muted-foreground': '#5A6478',
+        },
+        fontFamily: {
+          sans: ['Manrope', 'system-ui', 'sans-serif'],
+          display: ['Manrope', 'system-ui', 'sans-serif'],
+          mono: ['Manrope', 'ui-monospace', 'monospace'],
+        },
+        boxShadow: {
+          soft: '0 1px 2px rgba(28,54,97,0.05), 0 4px 12px rgba(28,54,97,0.05)',
+          elevated: '0 8px 30px -8px rgba(242,142,38,0.30)',
+          cta: '0 10px 30px -8px rgba(242,142,38,0.45)',
+        },
+        animation: {
+          'fade-up': 'fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both',
+          float: 'float 6s ease-in-out infinite',
+          marquee: 'marquee 18s linear infinite',
+        },
+        keyframes: {
+          fadeUp: { '0%': { opacity: 0, transform: 'translateY(16px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+          float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
+          marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', system-ui, sans-serif; color: #1A1A1A; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4 { letter-spacing: -0.02em; }
+  a, button { transition: color .25s, background-color .25s, transform .2s, box-shadow .25s, opacity .25s; }
+  .gradient-text { background: linear-gradient(135deg,#F28E26 0%,#FFA94D 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .dot-pattern { background-image: radial-gradient(circle, rgba(28,54,97,0.08) 1px, transparent 1px); background-size: 24px 24px; }
+  .grid-pattern { background-image: linear-gradient(rgba(28,54,97,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(28,54,97,0.05) 1px, transparent 1px); background-size: 60px 60px; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  /* Modal */
+  .modal-backdrop { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); display: none; align-items: flex-start; justify-content: center; padding: 1rem; overflow-y: auto; }
+  .modal-backdrop.open { display: flex; }
+  @media (min-width: 768px) { .modal-backdrop { align-items: center; } }
+  /* FAQ */
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .plus-icon { transform: rotate(45deg); }
+  .plus-icon { transition: transform .25s; }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- Top bar -->
+<div class="bg-primary text-white text-center text-sm py-2 px-4">
+  Veja uma demonstração grátis.
+  <button onclick="openLeadModal()" class="font-semibold underline-offset-4 hover:underline">ACESSAR →</button>
+</div>
+
+<!-- Header -->
+<header id="site-header" class="sticky top-0 z-40 bg-white transition-all">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-3 flex items-center justify-between gap-4">
+    <a href="#" class="flex items-center"><img src="assets/clic-logo.webp" alt="Clic Tecnologia" class="h-9 w-auto" /></a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm text-ink">
+      <a href="#dores" class="font-medium hover:text-primary">O Problema</a>
+      <a href="#solucao" class="font-medium hover:text-primary">Solução</a>
+      <a href="#funcionalidades" class="font-medium hover:text-primary">Funcionalidades</a>
+      <a href="#calculadora" class="font-medium hover:text-primary">Calculadora</a>
+      <a href="#planos" class="font-medium hover:text-primary">Planos</a>
+      <a href="#faq" class="font-medium hover:text-primary">FAQ</a>
+    </nav>
+    <button onclick="openLeadModal()" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-full shadow-cta">
+      DEMONSTRAÇÃO GRÁTIS <span>↗</span>
+    </button>
+    <button onclick="toggleMenu()" class="lg:hidden p-2 text-ink" aria-label="Menu">
+      <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-border bg-white">
+    <nav class="flex flex-col p-4 gap-1">
+      <a href="#dores" class="px-3 py-3 rounded-lg hover:bg-muted text-ink font-medium">O Problema</a>
+      <a href="#solucao" class="px-3 py-3 rounded-lg hover:bg-muted text-ink font-medium">Solução</a>
+      <a href="#funcionalidades" class="px-3 py-3 rounded-lg hover:bg-muted text-ink font-medium">Funcionalidades</a>
+      <a href="#calculadora" class="px-3 py-3 rounded-lg hover:bg-muted text-ink font-medium">Calculadora</a>
+      <a href="#planos" class="px-3 py-3 rounded-lg hover:bg-muted text-ink font-medium">Planos</a>
+      <a href="#faq" class="px-3 py-3 rounded-lg hover:bg-muted text-ink font-medium">FAQ</a>
+      <button onclick="openLeadModal()" class="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 bg-primary text-white font-semibold rounded-full">DEMONSTRAÇÃO GRÁTIS ↗</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative overflow-hidden bg-cream">
+  <div class="absolute inset-0 dot-pattern opacity-60 pointer-events-none"></div>
+  <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center" style="padding-top:80px;padding-bottom:80px">
+    <div class="lg:col-span-6 animate-fade-up text-center lg:text-left">
+      <div class="inline-block px-4 py-2.5 bg-primary text-white rounded-[5px] text-xs font-bold uppercase tracking-wider mb-6 leading-snug">
+        Plataforma N°1 de força de vendas para distribuidoras
+      </div>
+      <h1 class="font-display font-bold leading-[1.05] text-ink mb-6 text-[40px] sm:text-5xl lg:text-[58px]">
+        Tire pedidos<br />em <span class="text-primary">segundos</span>,<br />não em horas.
+      </h1>
+      <p class="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-9">
+        O <strong class="text-ink">ClicVenda</strong> transforma o pedido por WhatsApp em um fluxo automatizado entre representante, ERP e cliente.
+        <span class="block mt-1">Sem retrabalho. Sem erro. Sem cliente esperando.</span>
+      </p>
+      <div class="flex flex-wrap items-center justify-center lg:justify-start gap-5 mb-4">
+        <button onclick="openLeadModal()" class="inline-flex items-center gap-2 px-7 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full shadow-cta hover:scale-[1.02]">
+          AGENDAR DEMONSTRAÇÃO GRATUITA <span>→</span>
+        </button>
+      </div>
+    </div>
+    <div class="lg:col-span-6 relative animate-fade-up" style="animation-delay:200ms">
+      <img src="assets/hero-mockup.png" alt="App ClicVenda em smartphone" class="relative w-full max-w-[576px] lg:max-w-[720px] mx-auto animate-float" />
+    </div>
+  </div>
+</section>
+
+<!-- DORES (PAINS) -->
+<section id="dores" class="bg-white reveal" style="padding-top:100px;padding-bottom:100px">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-14">
+      <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">O Problema</div>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold text-ink mb-5 leading-tight">
+        Sua operação está sangrando.<br />
+        <span class="gradient-text">Você só não sabe quanto.</span>
+      </h2>
+      <p class="text-lg text-muted-foreground leading-relaxed">
+        Mapeamos as 6 dores que custam mais caro nas distribuidoras brasileiras. Você vai reconhecer todas.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" id="pains-grid"></div>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section id="solucao" class="bg-cream relative overflow-hidden reveal" style="padding-top:100px;padding-bottom:100px">
+  <div class="absolute inset-0 grid-pattern opacity-40 pointer-events-none"></div>
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-16 text-center mx-auto">
+      <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">Como Funciona</div>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold text-ink mb-5 leading-tight">
+        Um app. Três cliques.<br />
+        Pedido <span class="gradient-text">faturado em minutos</span>.
+      </h2>
+      <p class="text-lg text-muted-foreground">
+        O ClicVenda elimina o intermediário humano entre o representante e o ERP. Tudo flui em tempo real.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6" id="solution-grid"></div>
+    <div class="mt-14 text-center">
+      <button onclick="openLeadModal()" class="inline-flex items-center gap-2 px-7 py-4 bg-ink hover:bg-ink/90 text-white font-semibold rounded-full shadow-soft">
+        VER DEMONSTRAÇÃO AO VIVO →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FUNCIONALIDADES -->
+<section id="funcionalidades" class="bg-cream reveal" style="padding-top:25px;padding-bottom:100px">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-10 items-end mb-14">
+      <div>
+        <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">Funcionalidades</div>
+        <h2 class="font-display text-3xl lg:text-4xl font-bold text-ink leading-tight">
+          Tudo o que seu representante precisa.<br />
+          <span class="gradient-text">Nada que ele não use.</span>
+        </h2>
+      </div>
+      <p class="text-base lg:text-lg text-muted-foreground lg:pl-6 lg:border-l lg:border-border">
+        Construído com mais de 500 distribuidoras. Cada funcionalidade resolve uma dor real. Cada tela foi testada em campo.
+      </p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="features-grid"></div>
+  </div>
+</section>
+
+<!-- CALCULADORA (resumo simplificado) -->
+<section id="calculadora" class="bg-cream relative overflow-hidden reveal" style="padding-top:25px;padding-bottom:100px">
+  <div class="absolute inset-0 dot-pattern opacity-50 pointer-events-none"></div>
+  <div class="relative max-w-5xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-12 text-center mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-soft text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-5">
+        ✨ Calculadora · 20 dores · 4 pilares
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold text-ink leading-[1.1] mb-5">
+        Quanto a sua operação está<br />
+        <span class="gradient-text">perdendo agora?</span>
+      </h2>
+      <p class="text-lg text-muted-foreground">
+        Configure seu cenário e veja o ROI estimado. Cálculo baseado em benchmarks de mais de 500 distribuidoras brasileiras.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="bg-white border border-border rounded-3xl p-7">
+        <div class="text-xs font-mono uppercase tracking-wider text-primary font-bold mb-5">01 — Sua operação hoje</div>
+        <div class="space-y-5" id="calc-inputs">
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span class="text-ink font-medium">Faturamento anual</span><span id="lbl-fat" class="font-mono font-bold text-primary">R$ 15M</span></div>
+            <input type="range" id="fat" min="5" max="100" value="15" class="w-full accent-primary" />
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span class="text-ink font-medium">Representantes</span><span id="lbl-reps" class="font-mono font-bold text-primary">7</span></div>
+            <input type="range" id="reps" min="3" max="100" value="7" class="w-full accent-primary" />
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span class="text-ink font-medium">Pedidos por rep / dia</span><span id="lbl-ped" class="font-mono font-bold text-primary">8</span></div>
+            <input type="range" id="ped" min="3" max="100" value="8" class="w-full accent-primary" />
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span class="text-ink font-medium">Investimento mensal</span><span id="lbl-inv" class="font-mono font-bold text-primary">R$ 4.500</span></div>
+            <input type="range" id="inv" min="690" max="35000" step="100" value="4500" class="w-full accent-primary" />
+          </div>
+        </div>
+      </div>
+
+      <div class="relative overflow-hidden rounded-3xl p-8 bg-ink text-white">
+        <div class="absolute top-0 right-0 w-96 h-96 opacity-20 blur-3xl rounded-full bg-primary -translate-y-1/3 translate-x-1/3"></div>
+        <div class="relative">
+          <div class="text-[11px] uppercase tracking-[0.2em] font-mono text-primary font-semibold mb-3">Retorno sobre Investimento</div>
+          <div class="font-display text-7xl font-bold leading-none mb-2"><span id="roi-val">324</span><span class="text-4xl font-light text-primary" id="roi-unit">%</span></div>
+          <div class="text-sm text-white/60 mb-8" id="roi-sub">no primeiro ano · somando 20 dores mapeadas</div>
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+            <div><div class="text-xs text-white/50 uppercase tracking-wider mb-1">Ganho anual</div><div class="font-display font-bold text-lg" id="ganho">R$ 229k</div></div>
+            <div><div class="text-xs text-white/50 uppercase tracking-wider mb-1">Líquido</div><div class="font-display font-bold text-lg text-primary" id="liquido">R$ 175k</div></div>
+            <div><div class="text-xs text-white/50 uppercase tracking-wider mb-1">Payback</div><div class="font-display font-bold text-lg" id="payback">2.8 meses</div></div>
+          </div>
+          <button onclick="openLeadModal()" class="mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full shadow-cta">
+            QUERO ESSE RETORNO →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVAS SOCIAIS -->
+<section class="bg-ink text-white relative overflow-hidden reveal" style="padding-top:100px;padding-bottom:100px">
+  <div class="absolute inset-0 grid-pattern opacity-10 pointer-events-none"></div>
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-14 text-center mx-auto">
+      <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">Provas Sociais</div>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold leading-tight">
+        Mais de 500 distribuidoras já tiram seus pedidos pelo <span class="gradient-text">ClicVenda</span>.
+      </h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 pb-16 border-b border-white/10" id="stats-grid"></div>
+
+    <div class="relative">
+      <div class="overflow-hidden">
+        <div id="testimonials-track" class="flex transition-transform duration-500 ease-out"></div>
+      </div>
+      <div id="testimonials-bullets" class="flex justify-center gap-2 mt-8"></div>
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 items-center opacity-70" id="client-logos-row"></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRAÇÕES -->
+<section id="integracoes" class="bg-white overflow-hidden reveal" style="padding-top:100px;padding-bottom:100px">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-14 text-center mx-auto">
+      <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">Integrações</div>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold text-ink mb-5 leading-tight">
+        Já conversa com o seu ERP.<br /><span class="gradient-text">Sem projeto. Sem esforço.</span>
+      </h2>
+      <p class="text-lg text-muted-foreground">
+        O hub de integração Clic é nativo e mantido pela própria Clic. Você não precisa contratar TI nem desenvolver nada.
+      </p>
+    </div>
+  </div>
+  <div class="relative w-full overflow-hidden">
+    <div class="flex gap-16 animate-marquee whitespace-nowrap items-center" id="erps-marquee"></div>
+  </div>
+  <p class="text-center text-sm text-muted-foreground mt-10 px-6">
+    Não vê seu ERP? <span class="text-ink font-semibold">A Clic constrói a integração para você.</span> Pergunte na demonstração.
+  </p>
+</section>
+
+<!-- PLANOS -->
+<section id="planos" class="bg-cream reveal" style="padding-top:100px;padding-bottom:100px">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-14 text-center mx-auto">
+      <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">Planos</div>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold text-ink mb-5">Preço transparente. <span class="gradient-text">Valor óbvio.</span></h2>
+      <p class="text-lg text-muted-foreground">Escolha o plano que cabe na sua operação. Sem fidelidade. Sem letras miúdas.</p>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6" id="plans-grid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-white reveal" style="padding-top:100px;padding-bottom:100px">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <div class="text-center mb-14">
+      <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">Perguntas frequentes</div>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold text-ink leading-tight">Tirou todas as <span class="gradient-text">dúvidas?</span></h2>
+    </div>
+    <div class="space-y-3" id="faq-list"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-ink text-white relative overflow-hidden reveal" style="padding-top:100px;padding-bottom:100px">
+  <div class="absolute inset-0 grid-pattern opacity-10 pointer-events-none"></div>
+  <div class="relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
+    <div class="text-xs uppercase tracking-[0.2em] font-mono font-bold text-primary mb-4">Vamos começar</div>
+    <h2 class="font-display text-4xl lg:text-6xl font-bold leading-[1.05] mb-6">
+      Pronto para impulsionar suas <span class="gradient-text">vendas?</span>
+    </h2>
+    <p class="text-lg text-white/70 leading-relaxed mb-10 max-w-2xl mx-auto">
+      Em 30 minutos, um especialista da Clic te mostra como o ClicVenda funcionaria na sua operação. Sem compromisso. Sem custo.
+    </p>
+    <div class="flex justify-center mb-10">
+      <button onclick="openLeadModal()" class="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full shadow-cta hover:scale-[1.02]">
+        QUERO VER O CLICVENDA EM AÇÃO →
+      </button>
+    </div>
+    <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/80">
+      <li class="flex items-center gap-2">🛡️ Seus dados estão seguros</li>
+      <li class="flex items-center gap-2">⏱️ Resposta em até 1 hora útil</li>
+      <li class="flex items-center gap-2">🔒 Conformidade com a LGPD</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t border-border">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+      <div class="col-span-2 lg:col-span-1 text-center md:text-left">
+        <img src="assets/clic-logo.webp" alt="Clic Tecnologia" class="h-12 md:h-10 w-auto mb-5 mx-auto md:mx-0" />
+        <p class="text-sm text-muted-foreground leading-relaxed max-w-md mx-auto md:mx-0">
+          A plataforma de Força de Vendas que conecta seu time externo ao seu ERP, com o controle, a velocidade e a inteligência que a sua operação precisa para crescer.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-display font-bold text-primary mb-4">Menu</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#" class="text-ink hover:text-primary">Home</a></li>
+          <li><a href="#dores" class="text-ink hover:text-primary">O Problema</a></li>
+          <li><a href="#solucao" class="text-ink hover:text-primary">A Plataforma</a></li>
+          <li><a href="#calculadora" class="text-ink hover:text-primary">Calculadora</a></li>
+          <li><a href="#planos" class="text-ink hover:text-primary">Planos</a></li>
+          <li><a href="#faq" class="text-ink hover:text-primary">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display font-bold text-primary mb-4">Plataforma</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="https://clictecnologia.com.br/diferencial/indicadores-de-vendas/" target="_blank" rel="noopener" class="text-ink hover:text-primary">Indicadores</a></li>
+          <li><a href="https://clictecnologia.com.br/diferencial/aplicativo-de-pedidos/" target="_blank" rel="noopener" class="text-ink hover:text-primary">Aplicativo de Pedidos</a></li>
+          <li><a href="https://clictecnologia.com.br/diferencial/hub-de-integracao/" target="_blank" rel="noopener" class="text-ink hover:text-primary">Hub de Integração</a></li>
+          <li><a href="https://clictecnologia.com.br/diferencial/copiloto-de-vendas/" target="_blank" rel="noopener" class="text-ink hover:text-primary">Copiloto de Vendas</a></li>
+        </ul>
+      </div>
+      <div class="col-span-2 lg:col-span-1 text-center md:text-left">
+        <h4 class="font-display font-bold text-primary mb-4">Contato</h4>
+        <ul class="space-y-3 text-sm text-ink inline-block text-left">
+          <li>📞 (47) 3230-0951</li>
+          <li>📍 Cel. Vidal Ramos, 1 – Sala 101 A<br />Jardim Blumenau, Blumenau – SC</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+      <div>© <span id="year"></span> Clic Tecnologia. Todos os direitos reservados.</div>
+      <div>Sankhya, TOTVS, Senior, WK, Bling e mais.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- LEAD MODAL -->
+<div id="lead-modal" class="modal-backdrop" onclick="if(event.target===this) closeLeadModal()">
+  <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl my-8">
+    <button onclick="closeLeadModal()" aria-label="Fechar" class="absolute top-3 right-3 z-10 w-9 h-9 inline-flex items-center justify-center rounded-full bg-muted hover:bg-border text-ink">✕</button>
+    <div class="p-6 md:p-8">
+      <h3 class="font-display text-2xl font-bold text-ink mb-1">Agende sua demonstração</h3>
+      <p class="text-sm text-muted-foreground mb-5">Preencha os dados abaixo e um especialista entra em contato.</p>
+      <div id="rd-form-container" class="min-h-[200px]"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','205366881720928');fbq('track','PageView');
+</script>
+
+<script>
+// ============ DATA ============
+const pains = [
+  { icon: '💬', title: 'Pedido por WhatsApp', desc: 'Seu rep tira pedido no WhatsApp. O back office redigita no ERP. Erros viram retrabalho.', metric: 'Até 3 horas perdidas por dia' },
+  { icon: '📦', title: 'Venda sem estoque', desc: 'Rep vende o que não tem. Cliente espera. Pedido cancelado. Margem evapora.', metric: '2% do faturamento em cancelamentos' },
+  { icon: '🏷️', title: 'Preço diferente por cliente', desc: 'Tabela na cabeça. Regra na planilha. Cada rep aplica desconto do jeito que acha.', metric: 'Até 33% de margem queimada' },
+  { icon: '⏳', title: 'Pedido demora dias', desc: 'Do pedido ao faturamento, o cliente espera. E enquanto espera, compra do concorrente.', metric: '1% do faturamento perdido' },
+  { icon: '👁️', title: 'Sem visibilidade', desc: 'Você só sabe se bateu meta no fim do mês. Quando descobre, é tarde para corrigir.', metric: 'Decisões com 72h de atraso' },
+  { icon: '🗂️', title: 'Múltiplas ferramentas', desc: 'WhatsApp + Excel + e-mail + ERP. Seu rep gasta meio dia trocando de tela.', metric: '30 minutos perdidos por rep/dia' },
+];
+
+const steps = [
+  { n: '01', icon: '📱', title: 'Representante tira pedido no app', desc: 'Catálogo, estoque e tabela de preços corretos por cliente. Validação em tempo real. Sem erro de digitação.' },
+  { n: '02', icon: '🗄️', title: 'Pedido entra no ERP automaticamente', desc: 'Hub de integração nativo Clic envia o pedido direto para o seu ERP — sem redigitação, sem planilha, sem WhatsApp.' },
+  { n: '03', icon: '🌐', title: 'Cliente acompanha pelo Portal B2B', desc: 'Status, NF, boleto, histórico. O cliente se atende sozinho. Você libera o back office para o que importa.' },
+];
+
+const features = [
+  { icon: '📡', title: 'Catálogo offline', desc: 'O rep vende mesmo sem sinal. Sincronia automática quando voltar a conectar.' },
+  { icon: '✅', title: 'Validação em tempo real', desc: 'Estoque, preço e limite de crédito conferidos no momento do pedido.' },
+  { icon: '🏷️', title: 'Tabelas por cliente/rede', desc: 'Política comercial automática. Cada cliente vê o preço dele. Sem erro.' },
+  { icon: '📍', title: 'Roteirização de visitas', desc: 'Agenda inteligente. Check-in com geolocalização. Histórico por cliente.' },
+  { icon: '🧾', title: 'Cobrança e financeiro', desc: 'Boletos, NF e títulos em aberto. Cliente pendente bloqueado automaticamente.' },
+  { icon: '🔁', title: 'Pedido recorrente', desc: 'Sugestão de reposição com base no histórico. Vendedor vende o que o cliente já compra.' },
+  { icon: '📊', title: 'Mix e curva ABC', desc: 'Cada cliente com seu mix ideal. Ranking de produtos por margem e giro.' },
+  { icon: '📈', title: 'Indicadores em tempo real', desc: 'Gestor vê meta, ticket médio e cobertura sem pedir relatório a ninguém.' },
+];
+
+const stats = [
+  { value: 500, prefix: '+', suffix: '', label: 'Distribuidoras ativas' },
+  { value: 4000, prefix: '+', suffix: '', label: 'Representantes em campo' },
+  { value: 25, prefix: '+R$ ', suffix: 'bi', label: 'Em pedidos processados' },
+  { value: 99.5, prefix: '', suffix: '%', label: 'Taxa de retenção', decimals: 1 },
+];
+
+const testimonials = [
+  { title: 'Redução de tempo e agilidade nos processos', quote: 'Antes, depois de um dia de trabalho, ainda era necessário ficar de 3h a 4h digitando pedidos na planilha de Excel, e com o clicVenda, digitando pedidos direto no aplicativo, agilizou muito a rotina.', name: 'Criativa Puxadores', role: 'Representante', logo: 'assets/clients/criativa.webp' },
+  { title: 'Redução de 90% de custos com administração', quote: 'Cada atualização era feita representante a representante, um a um, e com a aquisição do clicVenda isso ficou muito mais fácil. Agora, quando é necessária alguma mudança, é só alterar alguma função do sistema.', name: 'Clarice Fogões', role: 'Analista de TI', logo: 'assets/clients/clarice.webp' },
+  { title: 'Redução e economias de tempo', quote: 'Com a ferramenta, os meus clientes conseguem ter um ambiente fácil para realizar seus pedidos e conseguimos ter economias de tempo nas nossas negociações.', name: 'Supremo Cimentos', role: 'Gestor de TI', logo: 'assets/clients/supremo.webp' },
+  { title: 'Redução de 80% do retrabalho', quote: 'O Força de Vendas nos auxiliou a diminuir 80% do retrabalho e otimizar a equipe de faturamento, permitindo que chegássemos a áreas mais remotas. Essa expansão fez nossas vendas aumentarem em 12%.', name: 'Sucos Spres', role: 'Coordenador Comercial', logo: 'assets/clients/spres.webp' },
+];
+
+const erps = ['sankhya','totvs','senior','microsiga','bling','tiny','omie','contaazul'];
+
+const plans = [
+  { name: 'Starter', price: 'R$ 690', desc: 'Para distribuidoras começando a profissionalizar a operação.', features: ['Até 5 representantes','Aplicativo de pedidos','Catálogo offline','Integração com 1 ERP','Suporte por e-mail'] },
+  { name: 'Growth', price: 'R$ 2.490', desc: 'Operações em crescimento que precisam de visibilidade total.', features: ['Até 20 representantes','Tudo do Starter','Portal B2B do cliente','Indicadores em tempo real','Roteirização e check-in','Suporte prioritário'], highlight: true },
+  { name: 'Enterprise', price: 'Sob consulta', desc: 'Para indústrias e distribuidoras com operação complexa.', features: ['Representantes ilimitados','Tudo do Growth','Copiloto de vendas IA','Hub de integração full','SLA dedicado e CSM'] },
+];
+
+const faqs = [
+  { q: 'Quanto tempo leva para implantar o ClicVenda?', a: 'Em média 30 dias para estar rodando integrado ao seu ERP. Casos simples (Bling, Omie, Tiny) ficam prontos em 7 dias.' },
+  { q: 'Meu ERP é compatível?', a: 'O hub de integração Clic é nativo para Sankhya, TOTVS Protheus/RM, Sênior, SAP B1, WK, Bling, Omie e mais. Se o seu não está na lista, a Clic constrói a integração para você.' },
+  { q: 'O app funciona sem internet?', a: 'Sim. O catálogo, preços e clientes ficam disponíveis offline. Os pedidos sincronizam automaticamente quando o representante voltar a ter sinal.' },
+  { q: 'Como é cobrado o ClicVenda?', a: 'Mensalidade fixa baseada no plano e número de representantes ativos. Sem fidelidade. Sem taxa de implantação na maioria dos planos.' },
+  { q: 'Vocês oferecem treinamento?', a: 'Sim. Treinamento completo para representantes, gestores e back office incluído na implantação. Material em vídeo e suporte humano.' },
+  { q: 'Como funciona o suporte?', a: 'Suporte humano via WhatsApp, e-mail e telefone. Planos Growth e Enterprise contam com CSM dedicado e SLA garantido.' },
+];
+
+// ============ RENDER ============
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.getElementById('pains-grid').innerHTML = pains.map(p => `
+  <article class="group bg-white border border-border rounded-3xl p-7 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elevated transition-all duration-300">
+    <div class="w-12 h-12 bg-primary flex items-center justify-center mb-5 text-xl" style="border-radius:5px">${p.icon}</div>
+    <h3 class="font-display text-xl font-bold text-ink mb-2">${p.title}</h3>
+    <p class="text-muted-foreground leading-relaxed text-sm mb-5">${p.desc}</p>
+    <div class="font-mono text-sm font-bold text-primary border-t border-border pt-4">${p.metric}</div>
+  </article>`).join('');
+
+document.getElementById('solution-grid').innerHTML = steps.map(s => `
+  <div class="bg-white border border-border rounded-3xl p-8 h-full hover:shadow-elevated transition-all duration-300">
+    <div class="flex items-center justify-between mb-6">
+      <span class="font-mono text-5xl font-bold text-primary/20">${s.n}</span>
+      <div class="w-12 h-12 flex items-center justify-center bg-primary text-xl" style="border-radius:5px">${s.icon}</div>
+    </div>
+    <h3 class="font-display text-xl font-bold text-ink mb-3">${s.title}</h3>
+    <p class="text-muted-foreground leading-relaxed text-sm">${s.desc}</p>
+  </div>`).join('');
+
+document.getElementById('features-grid').innerHTML = features.map(f => `
+  <div class="bg-white border border-border rounded-2xl p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+    <div class="w-10 h-10 bg-primary flex items-center justify-center mb-4 text-base" style="border-radius:5px">${f.icon}</div>
+    <h3 class="font-display font-bold text-ink mb-2">${f.title}</h3>
+    <p class="text-sm text-muted-foreground leading-relaxed">${f.desc}</p>
+  </div>`).join('');
+
+document.getElementById('stats-grid').innerHTML = stats.map((s,i) => `
+  <div>
+    <div class="font-display text-4xl lg:text-5xl font-bold text-primary mb-2"><span class="count" data-end="${s.value}" data-decimals="${s.decimals||0}" data-prefix="${s.prefix}" data-suffix="${s.suffix}">${s.prefix}0${s.suffix}</span></div>
+    <div class="text-sm text-white/60">${s.label}</div>
+  </div>`).join('');
+
+document.getElementById('testimonials-track').innerHTML = testimonials.map(t => `
+  <article class="w-full flex-shrink-0 px-1">
+    <div class="grid md:grid-cols-2 gap-8 items-center bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12">
+      <div>
+        <div class="text-primary mb-4 font-display text-4xl leading-none">"</div>
+        <h3 class="font-display text-xl md:text-2xl font-bold mb-4">${t.title}</h3>
+        <p class="text-white/85 leading-relaxed mb-6">${t.quote}</p>
+        <div class="pt-4 border-t border-white/10"><div class="font-semibold">${t.name}</div><div class="text-sm text-white/60">${t.role}</div></div>
+      </div>
+      <div class="flex items-center justify-center bg-white rounded-xl p-8 min-h-[220px]"><img src="${t.logo}" alt="${t.name}" class="max-h-32 w-auto object-contain" /></div>
+    </div>
+  </article>`).join('');
+
+document.getElementById('client-logos-row').innerHTML = testimonials.map(t => `
+  <div class="flex items-center justify-center bg-white/5 rounded-lg p-4 h-20"><img src="${t.logo}" alt="${t.name}" class="max-h-12 w-auto object-contain" /></div>
+`).join('');
+
+document.getElementById('testimonials-bullets').innerHTML = testimonials.map((_,i) => `
+  <button data-idx="${i}" class="bullet h-2.5 rounded-full transition-all ${i===0 ? 'bg-primary w-8' : 'bg-white/30 hover:bg-white/50 w-2.5'}" aria-label="Depoimento ${i+1}"></button>
+`).join('');
+
+document.getElementById('erps-marquee').innerHTML = [...erps,...erps].map(e => `
+  <img src="assets/erps/${e}.png" alt="${e}" class="h-14 md:h-[68px] w-auto object-contain opacity-80 hover:opacity-100 transition px-4 flex-shrink-0" loading="lazy" />
+`).join('');
+
+document.getElementById('plans-grid').innerHTML = plans.map(p => `
+  <div class="relative rounded-3xl p-8 transition-all hover:-translate-y-1 ${p.highlight ? 'bg-ink text-white shadow-elevated lg:scale-105' : 'bg-white border border-border'}">
+    ${p.highlight ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white text-xs font-bold rounded-full uppercase tracking-wider">Mais popular</div>' : ''}
+    <div class="font-display text-2xl font-bold mb-2">${p.name}</div>
+    <p class="text-sm mb-6 ${p.highlight ? 'text-white/70' : 'text-muted-foreground'}">${p.desc}</p>
+    <div class="mb-6"><span class="font-display text-4xl font-bold">${p.price}</span>${p.price.startsWith('R$') ? `<span class="text-sm ml-1 ${p.highlight?'text-white/60':'text-muted-foreground'}">/mês</span>` : ''}</div>
+    <ul class="space-y-3 mb-8">${p.features.map(f => `<li class="flex items-start gap-3 text-sm"><span class="text-primary mt-0.5">✓</span><span class="${p.highlight?'text-white/90':'text-ink'}">${f}</span></li>`).join('')}</ul>
+    <button onclick="openLeadModal()" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold ${p.highlight ? 'bg-primary hover:bg-primary/90 text-white shadow-cta' : 'bg-ink hover:bg-ink/90 text-white'}">FALAR COM CONSULTOR →</button>
+  </div>`).join('');
+
+document.getElementById('faq-list').innerHTML = faqs.map((f,i) => `
+  <details ${i===0?'open':''} class="bg-white border border-border rounded-2xl overflow-hidden hover:border-primary/40">
+    <summary class="flex items-center justify-between gap-4 p-6">
+      <span class="font-display font-semibold text-ink text-lg">${f.q}</span>
+      <span class="plus-icon text-primary text-2xl leading-none">+</span>
+    </summary>
+    <div class="px-6 pb-6 text-muted-foreground leading-relaxed">${f.a}</div>
+  </details>`).join('');
+
+// ============ INTERACTIONS ============
+function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('hidden'); }
+
+// Header scroll
+window.addEventListener('scroll', () => {
+  const h = document.getElementById('site-header');
+  if (window.scrollY > 200) h.classList.add('shadow-soft','border-b','border-border','backdrop-blur-md');
+  else h.classList.remove('shadow-soft','border-b','border-border','backdrop-blur-md');
+});
+
+// Reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+}, { rootMargin: '0px 0px -40px 0px', threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Count up
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, end = parseFloat(el.dataset.end), dec = parseInt(el.dataset.decimals)||0;
+    const px = el.dataset.prefix||'', sx = el.dataset.suffix||'';
+    const dur = 1800, start = performance.now();
+    const tick = t => {
+      const p = Math.min((t-start)/dur, 1);
+      const v = end * (1 - Math.pow(1-p, 3));
+      el.textContent = px + (dec>0 ? v.toFixed(dec).replace('.',',') : Math.floor(v).toLocaleString('pt-BR')) + sx;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = px + (dec>0 ? end.toFixed(dec).replace('.',',') : end.toLocaleString('pt-BR')) + sx;
+    };
+    requestAnimationFrame(tick);
+    countObs.unobserve(el);
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.count').forEach(el => countObs.observe(el));
+
+// Testimonials carousel
+let tIdx = 0;
+const track = document.getElementById('testimonials-track');
+function setTestimonial(i){
+  tIdx = i;
+  track.style.transform = `translateX(-${i*100}%)`;
+  document.querySelectorAll('.bullet').forEach((b,k) => {
+    b.className = `bullet h-2.5 rounded-full transition-all ${k===i ? 'bg-primary w-8' : 'bg-white/30 hover:bg-white/50 w-2.5'}`;
+  });
+}
+document.querySelectorAll('.bullet').forEach(b => b.addEventListener('click', () => setTestimonial(parseInt(b.dataset.idx))));
+setInterval(() => setTestimonial((tIdx+1)%testimonials.length), 6000);
+
+// Calculator
+function fmtCompact(v){ if(v>=1e6) return 'R$ '+(v/1e6).toFixed(2)+'M'; if(v>=1e3) return 'R$ '+(v/1e3).toFixed(0)+'k'; return 'R$ '+Math.round(v); }
+function fmt(v){ return new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0}).format(v); }
+function calc(){
+  const fat = +document.getElementById('fat').value;
+  const reps = +document.getElementById('reps').value;
+  const ped = +document.getElementById('ped').value;
+  const inv = +document.getElementById('inv').value;
+  document.getElementById('lbl-fat').textContent = `R$ ${fat}M`;
+  document.getElementById('lbl-reps').textContent = reps;
+  document.getElementById('lbl-ped').textContent = ped;
+  document.getElementById('lbl-inv').textContent = fmt(inv);
+  const fatAnual = fat*1e6, pedidosAno = reps*ped*22*12;
+  // Simplified gain factor based on benchmarks
+  const ganho = pedidosAno*(10/60)*0.8*36 + fatAnual*0.02*0.25*0.7 + fatAnual*0.01*0.25*0.5 + fatAnual*0.005;
+  const invAnual = inv*12;
+  const liquido = ganho - invAnual;
+  const roi = (liquido/invAnual)*100;
+  const pay = invAnual/(ganho/12);
+  if (roi > 999) { document.getElementById('roi-val').textContent = (roi/100).toFixed(0); document.getElementById('roi-unit').textContent = 'x'; document.getElementById('roi-sub').textContent = 'vezes o investimento · 20 dores mapeadas'; }
+  else { document.getElementById('roi-val').textContent = roi.toFixed(0); document.getElementById('roi-unit').textContent = '%'; document.getElementById('roi-sub').textContent = 'no primeiro ano · somando 20 dores mapeadas'; }
+  document.getElementById('ganho').textContent = fmtCompact(ganho);
+  document.getElementById('liquido').textContent = fmtCompact(liquido);
+  document.getElementById('payback').textContent = pay < 1 ? '< 1 mês' : pay.toFixed(1)+' meses';
+}
+['fat','reps','ped','inv'].forEach(id => document.getElementById(id).addEventListener('input', calc));
+calc();
+
+// Lead Modal + RD Station
+let rdLoaded = false, rdMounted = false;
+function openLeadModal(){
+  document.getElementById('lead-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (rdMounted) return;
+  const mount = () => {
+    if (window.RDStationForms && !rdMounted) {
+      document.getElementById('rd-form-container').innerHTML = '<div role="main" id="qualificacao-lead-site-74d4761c8872d7ba03f1"></div>';
+      new window.RDStationForms('qualificacao-lead-site-74d4761c8872d7ba03f1', null).createForm();
+      rdMounted = true;
+    }
+  };
+  if (window.RDStationForms) { mount(); }
+  else if (!rdLoaded) {
+    rdLoaded = true;
+    const s = document.createElement('script');
+    s.src = 'https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js';
+    s.onload = mount;
+    document.head.appendChild(s);
+  }
+}
+function closeLeadModal(){
+  document.getElementById('lead-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+window.openLeadModal = openLeadModal;
+window.closeLeadModal = closeLeadModal;
+window.toggleMenu = toggleMenu;
+</script>
+</body>
+</html>
