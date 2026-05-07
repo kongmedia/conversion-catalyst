@@ -652,12 +652,14 @@ document.getElementById('erps-marquee').innerHTML = [...erps,...erps].map(e => `
 
 document.getElementById('plans-grid').innerHTML = plans.map(p => `
   <div class="relative rounded-3xl p-8 transition-all hover:-translate-y-1 ${p.highlight ? 'bg-ink text-white shadow-elevated lg:scale-105' : 'bg-white border border-border'}">
-    ${p.highlight ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white text-xs font-bold rounded-full uppercase tracking-wider">Mais popular</div>' : ''}
-    <div class="font-display text-2xl font-bold mb-2">${p.name}</div>
-    <p class="text-sm mb-6 ${p.highlight ? 'text-white/70' : 'text-muted-foreground'}">${p.desc}</p>
-    <div class="mb-6"><span class="font-display text-4xl font-bold">${p.price}</span>${p.price.startsWith('R$') ? `<span class="text-sm ml-1 ${p.highlight?'text-white/60':'text-muted-foreground'}">/mês</span>` : ''}</div>
-    <ul class="space-y-3 mb-8">${p.features.map(f => `<li class="flex items-start gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 mt-0.5 flex-shrink-0 text-primary"></i><span class="${p.highlight?'text-white/90':'text-ink'}">${f}</span></li>`).join('')}</ul>
-    <button onclick="openLeadModal()" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold ${p.highlight ? 'bg-primary hover:bg-primary/90 text-white shadow-cta' : 'bg-ink hover:bg-ink/90 text-white'}">FALAR COM CONSULTOR <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+    ${p.highlight ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white text-xs font-bold rounded-full uppercase tracking-wider">Maior impacto</div>' : ''}
+    <div class="flex items-center gap-2 text-sm font-semibold mb-3 ${p.highlight ? 'text-white/80' : 'text-muted-foreground'}">
+      <i data-lucide="${p.icon}" class="w-5 h-5 ${p.highlight ? 'text-white' : 'text-primary'}"></i>
+      ${p.audience}
+    </div>
+    <div class="font-display text-2xl font-bold mb-1 ${p.highlight ? 'text-white' : 'text-ink'}">${p.title}</div>
+    <p class="text-sm mb-6 ${p.highlight ? 'text-white/80' : 'text-muted-foreground'}">${p.subtitle}</p>
+    <ul class="space-y-3 mb-8">${p.items.map(f => `<li class="flex items-start gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 mt-0.5 flex-shrink-0 ${p.highlight?'text-white':'text-primary'}"></i><span class="${p.highlight?'text-white':'text-ink'}">${f}</span></li>`).join('')}</ul>
   </div>`).join('');
 
 document.getElementById('faq-list').innerHTML = faqs.map((f,i) => `
