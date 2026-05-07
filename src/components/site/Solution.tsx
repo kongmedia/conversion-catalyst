@@ -64,7 +64,7 @@ export function Solution() {
             onClick={openLeadModal}
             className="inline-flex items-center gap-2 px-7 py-4 bg-ink hover:bg-ink/90 text-primary-foreground font-semibold rounded-full transition shadow-soft"
           >
-            Ver demonstração ao vivo <ArrowRight className="w-5 h-5" />
+            VER DEMONSTRAÇÃO AO VIVO <ArrowRight className="w-5 h-5" />
           </button>
         </div>
       </div>
